@@ -2,7 +2,7 @@
 #
 #  only doing all the sudos as cloud-init doesn't run as root, likely better to use Azure VM Extensions
 #
-#  $1 is the forwarder in azure, $2 is the vnet IP range, $3 is the external IP range, $4 forwarder on-premise (1), $ forwarder  on-premise (2)
+#  $1 is the forwarder in azure, $2 is the vnet IP range, $3 is the external IP range, $4 forwarder on-premise (1), $5 forwarder  on-premise (2)
 #
 
 touch /tmp/forwarderSetup_start
@@ -43,7 +43,7 @@ options {
 zone "algotec.local" {
     type forward;
     forward only;
-    forwarders { $3; $4; };
+    forwarders { $4; $5; };
 };
 
 EndOFNamedConfOptions
