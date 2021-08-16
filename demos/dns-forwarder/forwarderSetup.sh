@@ -2,7 +2,7 @@
 #
 #  only doing all the sudos as cloud-init doesn't run as root, likely better to use Azure VM Extensions
 #
-#  $1 is the forwarder, $2 is the vnet IP range
+#  $1 is the forwarder, $2 is the vnet IP range, $3 is the external IP range
 #
 
 touch /tmp/forwarderSetup_start
@@ -17,6 +17,7 @@ sudo apt-get install bind9 -y
 sudo cat > named.conf.options << EndOFNamedConfOptions
 acl goodclients {
     $2;
+    $3;
     localhost;
     localnets;
 };
@@ -33,7 +34,7 @@ options {
         };
         forward only;
 
-        dnssec-validation auto;
+        dnssec-validation no;
 
         auth-nxdomain no;    # conform to RFC1035
         listen-on { any; };
