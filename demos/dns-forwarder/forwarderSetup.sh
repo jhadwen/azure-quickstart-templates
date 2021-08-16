@@ -52,6 +52,12 @@ zone "uat.algotec.local" {
     forwarders { $4; $5; };
 };
 
+zone "sociustec.net" {
+    type forward;
+    forward only;
+    forwarders { $4; $5; };
+};
+
 EndOFNamedConfOptions
 
 sudo cp named.conf.options /etc/bind
