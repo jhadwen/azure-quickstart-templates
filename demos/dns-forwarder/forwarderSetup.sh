@@ -46,7 +46,7 @@ zone "algotec.local" {
     forwarders { $4; $5; };
 };
 
-zone "*.algotec.local" {
+zone "uat.algotec.local" {
     type forward;
     forward only;
     forwarders { $4; $5; };
